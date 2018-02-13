@@ -20,6 +20,7 @@ gem "simple_form"
 gem "slim-rails"
 gem "uglifier"
 gem "pundit"
+gem "devise"
 
 gem "awesome_print"
 
@@ -51,7 +52,6 @@ group :development do
   gem "spring"
   gem "spring-commands-rspec"
   gem "spring-watcher-listen"
-  gem "devise"
   # gem "guard"
   # gem "guard-rspec", ">= 4.6.5" # Resolves to 1.x without a version constraint. :/
   # gem "guard-livereload"
