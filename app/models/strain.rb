@@ -18,4 +18,15 @@
 
 class Strain < ApplicationRecord
   has_secure_token
+  validates :name, :lineage, :description, presence: true
+  validates :name, uniqueness: true
+  validates :lineage, inclusion: %w(Indica Sativa Hybrid)
+  has_many :reviews
+  has_many :strain_effects
+  has_many :effects, through: :strain_effects
+
+  def score
+    reviews.average(:rating)
+  end
+
 end

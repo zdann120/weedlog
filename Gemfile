@@ -31,6 +31,7 @@ group :test do
   # gem "capybara-email"
   gem "capybara-selenium"
   gem "simplecov"
+  gem "capybara-webkit"
 end
 
 group :test, :development do

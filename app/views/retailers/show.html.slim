@@ -1,0 +1,24 @@
+.page-header
+  h1 Retailer
+
+dl
+  dt Name
+  dd= @retailer.name
+  dt Street address
+  dd= @retailer.street_address
+  dt City
+  dd= @retailer.city
+  dt State
+  dd= @retailer.state
+  dt Zip
+  dd= @retailer.zip
+
+/- if can?(:edit, @retailer)
+= link_to text_with_icon('Edit', 'edit'), edit_retailer_path(@retailer), class: 'btn btn-default'
+'
+= link_to text_with_icon('Back', 'chevron-left'), :back, class: 'btn btn-default'
+
+/- if can?(:destroy, @retailer)
+'
+= link_to text_with_icon('Destroy', 'remove'), retailer_path(@retailer),
+          method: :delete, data: { confirm: "Are you sure?" }, class: 'btn btn-danger'

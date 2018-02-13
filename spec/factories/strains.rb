@@ -18,9 +18,8 @@
 
 FactoryBot.define do
   factory :strain do
-    token ""
-    name "MyString"
-    lineage "MyString"
-    description "MyString"
+    name "Girl Scout Cookies"
+    lineage "Sativa"
+    description "The classic strain."
   end
 end

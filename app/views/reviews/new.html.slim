@@ -1,0 +1,19 @@
+h1 Review Strain
+hr
+h2.text-muted = @strain.name
+= simple_form_for([@strain, @review]) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :rating, as: :select, collection: 1..10, autofocus: true
+    = f.input :comment
+    = f.association :retailer
+    = f.input :product_type
+    /= f.association :effects
+
+  = f.submit 'Post Review', class: 'btn btn-primary'
+  '
+  = link_to text_with_icon('Back', 'chevron-left'), :back, class: 'btn btn-default'
+
+/javascript:
+  $('#review_effect_ids').select2();

@@ -8,7 +8,30 @@ dl
   dd= @strain.lineage
   dt Description
   dd= @strain.description
-
+  dt Effects
+  dd= @strain.effects.pluck(:name).join(', ')
+  dt Rating
+  dd= @strain.score
+hr
+h3
+  ' Reviews
+  span. = link_to 'Add Review', new_strain_review_path(@strain), class: 'btn btn-primary'
+table.table-sm.table.table-bordered.table-striped
+  thead
+    tr
+      th Posted by
+      th Rating
+      th Comment
+      th Retailer
+      th Type
+  tbody
+    - @strain.reviews.each do |review|
+      tr
+        td = review.user.email
+        td = review.rating
+        td = review.comment
+        td = review.retailer.try(:name)
+        td = review.product_type
 /- if can?(:edit, @strain)
 = link_to text_with_icon('Edit', 'edit'), edit_strain_path(@strain), class: 'btn btn-default'
 '
@@ -18,3 +41,4 @@ dl
 '
 /= link_to text_with_icon('Destroy', 'remove'), strain_path(@strain),
           method: :delete, data: { confirm: "Are you sure?" }, class: 'btn btn-danger'
+'

@@ -1,5 +1,5 @@
 class StrainsController < ApplicationController
-
+  before_action :authenticate_user!
   before_action :set_strain, only: [:show, :edit, :update, :destroy]
 
   def index
@@ -48,6 +48,7 @@ class StrainsController < ApplicationController
 
   # Only allow a trusted parameter "white list" through.
   def strain_params
-    params.require(:strain).permit(:token, :name, :lineage, :description)
+    params.require(:strain).permit(:token, :name, :lineage, :description,
+                                  effect_ids: [])
   end
 end
