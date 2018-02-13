@@ -1,5 +1,4 @@
 class ReviewsController < ApplicationController
-  before_action :authenticate_user!
   def new
     @strain = Strain.find(params[:strain_id])
     @review = Review.new
