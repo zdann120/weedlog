@@ -1,0 +1,28 @@
+div.page-header
+  h1 Listing strains
+
+table.table.table-striped.table-hover
+  thead
+    tr
+      th Name
+      th Lineage
+      th Description
+      th Actions
+
+  tbody
+    - @strains.each do |strain|
+      tr
+        /td= link_to_if can?(:show, strain), strain.id, strain_path(strain)
+        td= link_to strain.name, strain
+        td= strain.lineage
+        td= truncate strain.description
+        td
+          /- if can? :edit, strain
+          = link_to text_with_icon('Edit', 'edit'), edit_strain_path(strain), class: 'btn btn-default btn-xs'
+          '
+          /- if can? :destroy, strain
+          /= link_to text_with_icon('Destroy', 'remove'), strain_path(strain),
+                    method: :delete, data: { confirm: "Are you sure?" }, class: 'btn btn-default btn-xs btn-danger'
+
+/- if can? :create, Strain
+= link_to text_with_icon('New Strain', 'plus'), new_strain_path, class: 'btn btn-primary'

@@ -1,0 +1,12 @@
+= simple_form_for(strain) do |f|
+  = f.error_notification
+
+  .form-inputs
+    = f.input :name, autofocus: true
+    = f.input :lineage
+    = f.input :description
+
+  = button_tag type: 'submit', class: 'btn btn-primary' do
+    = text_with_icon "#{btn_action_prefix} Strain", action_icon_name
+  '
+  = link_to text_with_icon('Back', 'chevron-left'), :back, class: 'btn btn-default'
