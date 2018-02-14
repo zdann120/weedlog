@@ -1,0 +1,6 @@
+h1 = @user.username
+table.table
+  - @user.attributes.each do |attr, val|
+    tr
+      th = attr.titleize
+      td = val.to_s.titleize
