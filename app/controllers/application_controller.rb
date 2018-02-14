@@ -14,9 +14,13 @@ class ApplicationController < ActionController::Base
   end
 
   def authenticate_inviter!
-    raise NotAllowedToInviteUsers unless current_user.try(:admin?)
+    if current_user.try(:admin?)
+      current_user
+    else
+      raise NotAllowedToInviteUsers
+    end
   rescue NotAllowedToInviteUsers => e
-    redirect_to root_path, notice: 'Only admins can add new users.'
+    redirect_to root_path, notice: 'You cannot add users.'
   end
 
   class NotAllowedToInviteUsers < StandardError

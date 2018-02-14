@@ -33,10 +33,10 @@ Rails.application.configure do
   #   - In either case, always raise delivery errors.
   #   - Other configuration here follows standard Rails conventions.
   begin
-    mailcatcher_port = 1025
+    mailcatcher_port = 1080
     sock = TCPSocket.new("localhost", mailcatcher_port)
     sock.close
-    config.action_mailer.delivery_method = :smtp
+    config.action_mailer.delivery_method = :letter_opener
     config.action_mailer.smtp_settings = { address: "localhost", port: mailcatcher_port }
   rescue Errno::ECONNREFUSED
     config.action_mailer.delivery_method = :test

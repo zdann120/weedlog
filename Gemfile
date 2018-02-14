@@ -42,6 +42,7 @@ group :test, :development do
   gem "rspec-rails"
   gem "rspec_junit_formatter"
   gem "rubocop", require: false
+  gem "letter_opener"
 end
 
 group :development do
