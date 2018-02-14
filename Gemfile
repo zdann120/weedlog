@@ -22,6 +22,7 @@ gem "uglifier"
 gem "pundit"
 gem "devise"
 gem "devise_invitable"
+gem "sentry-raven"
 
 gem "awesome_print"
 
