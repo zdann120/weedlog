@@ -16,7 +16,7 @@ javascript:
       .panel-heading
         h3.panel-title Recently added strains
       ul.list-group
-        - Strain.all.limit(5).each do |strain|
+        - Strain.all.limit(5).order(created_at: :desc).each do |strain|
           li.list-group-item = link_to strain.name, strain
 
   .col-md-4
@@ -24,7 +24,7 @@ javascript:
       .panel-heading
         h3.panel-title Recent Reviews
       ul.list-group
-        - Review.all.limit(5).each do |review|
+        - Review.all.limit(5).order(created_at: :desc).each do |review|
           li.list-group-item
             = link_to review.strain.name
             | &mdash;
@@ -33,11 +33,13 @@ javascript:
   .col-md-4
     .panel.panel-default
       .panel-heading
-        h3.panel-title Leaderboard
+        h3.panel-title Leaderboard (Top 10)
       ul.list-group
-        - Strain.all.order(average_rating: :desc).limit(5).each do |s|
+        - Strain.all.order(average_rating: :desc).limit(10).each do |s|
           - next if s.average_rating.to_i == 0
           li.list-group-item
             = link_to s.name, s
             | &mdash;
             | #{s.average_rating} out of 10
+      .panel-footer.text-muted
+        | Leaderboard data updates every 60 seconds.
