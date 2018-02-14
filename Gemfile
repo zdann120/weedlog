@@ -21,6 +21,7 @@ gem "slim-rails"
 gem "uglifier"
 gem "pundit"
 gem "devise"
+gem "devise_invitable"
 
 gem "awesome_print"
 
