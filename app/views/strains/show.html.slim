@@ -1,17 +1,17 @@
 .page-header
   h1 Strain
-
-dl
-  dt Name
-  dd= @strain.name
-  dt Lineage
-  dd= @strain.lineage
-  dt Description
-  dd= @strain.description
-  dt Effects
-  dd= @strain.effects.pluck(:name).join(', ')
-  dt Rating
-  dd= @strain.score
+h3.text-muted 
+  = @strain.name
+  | &mdash;
+  span.label.label-default = @strain.lineage
+p.lead = @strain.description
+.panel.panel-default
+  .panel-body
+    dl
+      dt Effects
+      dd= @strain.effects.pluck(:name).join(', ')
+      dt Rating
+      dd= @strain.score
 hr
 h3
   ' Reviews

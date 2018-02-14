@@ -6,6 +6,7 @@ table.table.table-striped.table-hover
     tr
       th Name
       th Lineage
+      th Rating
       th Description
       th Actions
 
@@ -15,6 +16,7 @@ table.table.table-striped.table-hover
         /td= link_to_if can?(:show, strain), strain.id, strain_path(strain)
         td= link_to strain.name, strain
         td= strain.lineage
+        td= strain.average_rating
         td= truncate strain.description
         td
           - if policy(strain).edit?
