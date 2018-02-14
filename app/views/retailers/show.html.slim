@@ -1,17 +1,23 @@
 .page-header
   h1 Retailer
-
-dl
-  dt Name
-  dd= @retailer.name
-  dt Street address
-  dd= @retailer.street_address
-  dt City
-  dd= @retailer.city
-  dt State
-  dd= @retailer.state
-  dt Zip
-  dd= @retailer.zip
+.row
+  .col-md-3
+    dl
+      dt Name
+      dd= @retailer.name
+      dt Street address
+      dd= @retailer.street_address
+      dt City
+      dd= @retailer.city
+      dt State
+      dd= @retailer.state
+      dt Zip
+      dd= @retailer.zip
+  .col-md-9
+    .panel.panel-default
+      .panel-heading
+        h4.panel-title Reviews of products from this retailer
+      .panel-body This feature is coming soon!
 
 - if policy(@retailer).edit?
   = link_to text_with_icon('Edit', 'edit'), edit_retailer_path(@retailer), class: 'btn btn-default'

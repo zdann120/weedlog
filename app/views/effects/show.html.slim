@@ -1,11 +1,20 @@
 .page-header
   h1 Effect
+.row
+  .col-md-3
+    dl
+      dt Name
+      dd= @effect.name
+      dt Mood
+      dd= @effect.mood
+  .col-md-9
+    .panel.panel-default
+      .panel-heading
+        h4.panel-title Strains that make you feel #{@effect.name.downcase}
 
-dl
-  dt Name
-  dd= @effect.name
-  dt Mood
-  dd= @effect.mood
+      ul.list-group
+        - @effect.strains.each do |strain|
+          li.list-group-item = link_to strain.name, strain
 
 - if policy(@effect).edit?
   = link_to text_with_icon('Edit', 'edit'), edit_effect_path(@effect), class: 'btn btn-default'
