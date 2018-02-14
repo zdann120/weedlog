@@ -3,7 +3,10 @@
 <%= simple_form_for resource, as: resource_name, url: invitation_path(resource_name), html: { method: :put } do |f| %>
   <%= devise_error_messages! %>
   <%= f.hidden_field :invitation_token %>
-
+  <dl>
+    <dt>Email</dt>
+    <dd><%= resource.email %></dd>
+  </dl>
   <%= f.input :first_name %>
   <%= f.input :last_name %>
   <%= f.input :password %>
