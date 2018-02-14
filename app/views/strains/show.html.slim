@@ -1,21 +1,32 @@
-.page-header
-  h1 Strain
-h3.text-muted 
+h1.text-muted.text-center
   = @strain.name
   | &mdash;
   span.label.label-default = @strain.lineage
-p.lead = @strain.description
-.panel.panel-default
-  .panel-body
-    dl
-      dt Effects
-      dd= @strain.effects.pluck(:name).join(', ')
-      dt Rating
-      dd= @strain.score
+hr
+.row
+  .col-md-3
+    .panel.panel-primary
+      .panel-heading
+        h4.panel-title Strain Data
+      .panel-body
+        dl
+          dt Effects
+          dd= @strain.effects.pluck(:name).join(', ')
+          dt Rating
+          dd= @strain.score
+        span.float-right = link_to 'Add Review',
+          new_strain_review_path(@strain), class: 'btn btn-info float-right'
+
+  .col-md-9
+    .panel.panel-info
+      .panel-heading
+        h4.panel-title Description
+      .panel-body
+        p.lead
+          em = @strain.description
 hr
 h3
   ' Reviews
-  span. = link_to 'Add Review', new_strain_review_path(@strain), class: 'btn btn-primary'
 table.table-sm.table.table-bordered.table-striped
   thead
     tr
