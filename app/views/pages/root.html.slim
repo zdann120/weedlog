@@ -36,6 +36,7 @@ javascript:
         h3.panel-title Leaderboard
       ul.list-group
         - Strain.all.order(average_rating: :desc).limit(5).each do |s|
+          - next if s.average_rating.to_i == 0
           li.list-group-item
             = link_to s.name, s
             | &mdash;
