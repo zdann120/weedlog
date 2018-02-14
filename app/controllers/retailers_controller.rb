@@ -4,6 +4,7 @@ class RetailersController < ApplicationController
 
   def index
     @retailers = Retailer.all
+    authorize @retailers
   end
 
   def show
@@ -11,6 +12,7 @@ class RetailersController < ApplicationController
 
   def new
     @retailer = Retailer.new
+    authorize @retailer
   end
 
   def edit
@@ -18,6 +20,7 @@ class RetailersController < ApplicationController
 
   def create
     @retailer = Retailer.new(retailer_params)
+    authorize @retailer
 
     if @retailer.save
       redirect_to @retailer, notice: "Retailer was successfully created."
@@ -44,6 +47,7 @@ class RetailersController < ApplicationController
   # Use callbacks to share common setup or constraints between actions.
   def set_retailer
     @retailer = Retailer.find(params[:id])
+    authorize @retailer
   end
 
   # Only allow a trusted parameter "white list" through.

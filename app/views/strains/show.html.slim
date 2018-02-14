@@ -32,8 +32,8 @@ table.table-sm.table.table-bordered.table-striped
         td = review.comment
         td = review.retailer.try(:name)
         td = review.product_type
-/- if can?(:edit, @strain)
-= link_to text_with_icon('Edit', 'edit'), edit_strain_path(@strain), class: 'btn btn-default'
+- if policy(@strain).edit?
+  = link_to text_with_icon('Edit', 'edit'), edit_strain_path(@strain), class: 'btn btn-default'
 '
 = link_to text_with_icon('Back', 'chevron-left'), :back, class: 'btn btn-default'
 

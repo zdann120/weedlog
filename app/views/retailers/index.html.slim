@@ -4,7 +4,6 @@ div.page-header
 table.table.table-striped.table-hover
   thead
     tr
-      th ID
       th Name
       th Street address
       th City
@@ -16,19 +15,15 @@ table.table.table-striped.table-hover
     - @retailers.each do |retailer|
       tr
         /td= link_to_if can?(:show, retailer), retailer.id, retailer_path(retailer)
-        td= link_to retailer.id, retailer_path(retailer)
-        td= retailer.name
+        td= link_to retailer.name, retailer
         td= retailer.street_address
         td= retailer.city
         td= retailer.state
         td= retailer.zip
         td
-          /- if can? :edit, retailer
-          = link_to text_with_icon('Edit', 'edit'), edit_retailer_path(retailer), class: 'btn btn-default btn-xs'
+          - if policy(retailer).edit?
+            = link_to text_with_icon('Edit', 'edit'), edit_retailer_path(retailer), class: 'btn btn-default btn-xs'
           '
-          /- if can? :destroy, retailer
-          = link_to text_with_icon('Destroy', 'remove'), retailer_path(retailer),
-                    method: :delete, data: { confirm: "Are you sure?" }, class: 'btn btn-default btn-xs btn-danger'
 
-/- if can? :create, Retailer
-= link_to text_with_icon('New Retailer', 'plus'), new_retailer_path, class: 'btn btn-primary'
+- if policy(@retailers).create?
+  = link_to text_with_icon('New Retailer', 'plus'), new_retailer_path, class: 'btn btn-primary'

@@ -3,6 +3,7 @@ class StrainsController < ApplicationController
 
   def index
     @strains = Strain.all
+    authorize @strains
   end
 
   def show
@@ -43,6 +44,7 @@ class StrainsController < ApplicationController
   # Use callbacks to share common setup or constraints between actions.
   def set_strain
     @strain = Strain.find(params[:id])
+    authorize @strain
   end
 
   # Only allow a trusted parameter "white list" through.

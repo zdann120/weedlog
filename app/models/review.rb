@@ -31,4 +31,6 @@ class Review < ApplicationRecord
   belongs_to :user
   has_secure_token
   belongs_to :retailer
+
+  validates :rating, :retailer_id, :product_type, :comment, presence: true
 end

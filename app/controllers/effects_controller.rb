@@ -4,6 +4,7 @@ class EffectsController < ApplicationController
 
   def index
     @effects = Effect.all
+    authorize @effects
   end
 
   def show
@@ -11,6 +12,7 @@ class EffectsController < ApplicationController
 
   def new
     @effect = Effect.new
+    authorize @effect
   end
 
   def edit
@@ -18,6 +20,7 @@ class EffectsController < ApplicationController
 
   def create
     @effect = Effect.new(effect_params)
+    authorize @effect
 
     if @effect.save
       redirect_to @effect, notice: "Effect was successfully created."
@@ -44,6 +47,7 @@ class EffectsController < ApplicationController
   # Use callbacks to share common setup or constraints between actions.
   def set_effect
     @effect = Effect.find(params[:id])
+    authorize @effect
   end
 
   # Only allow a trusted parameter "white list" through.

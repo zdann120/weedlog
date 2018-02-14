@@ -7,12 +7,7 @@ dl
   dt Mood
   dd= @effect.mood
 
-/- if can?(:edit, @effect)
-= link_to text_with_icon('Edit', 'edit'), edit_effect_path(@effect), class: 'btn btn-default'
-'
+- if policy(@effect).edit?
+  = link_to text_with_icon('Edit', 'edit'), edit_effect_path(@effect), class: 'btn btn-default'
+  '
 = link_to text_with_icon('Back', 'chevron-left'), :back, class: 'btn btn-default'
-
-/- if can?(:destroy, @effect)
-'
-= link_to text_with_icon('Destroy', 'remove'), effect_path(@effect),
-          method: :delete, data: { confirm: "Are you sure?" }, class: 'btn btn-danger'

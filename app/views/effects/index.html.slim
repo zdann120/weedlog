@@ -17,12 +17,12 @@ table.table.table-striped.table-hover
         td= effect.name
         td= effect.mood
         td
-          /- if can? :edit, effect
-          = link_to text_with_icon('Edit', 'edit'), edit_effect_path(effect), class: 'btn btn-default btn-xs'
+          - if policy(effect).edit?
+            = link_to text_with_icon('Edit', 'edit'), edit_effect_path(effect), class: 'btn btn-default btn-xs'
           '
           /- if can? :destroy, effect
           /= link_to text_with_icon('Destroy', 'remove'), effect_path(effect),
                     method: :delete, data: { confirm: "Are you sure?" }, class: 'btn btn-default btn-xs btn-danger'
 
-/- if can? :create, Effect
-= link_to text_with_icon('New Effect', 'plus'), new_effect_path, class: 'btn btn-primary'
+- if policy(@effects).create?
+  = link_to text_with_icon('New Effect', 'plus'), new_effect_path, class: 'btn btn-primary'

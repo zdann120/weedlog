@@ -17,12 +17,13 @@ table.table.table-striped.table-hover
         td= strain.lineage
         td= truncate strain.description
         td
-          /- if can? :edit, strain
-          = link_to text_with_icon('Edit', 'edit'), edit_strain_path(strain), class: 'btn btn-default btn-xs'
+          - if policy(strain).edit?
+          
+            = link_to text_with_icon('Edit', 'edit'), edit_strain_path(strain), class: 'btn btn-default btn-xs'
           '
           /- if can? :destroy, strain
           /= link_to text_with_icon('Destroy', 'remove'), strain_path(strain),
                     method: :delete, data: { confirm: "Are you sure?" }, class: 'btn btn-default btn-xs btn-danger'
 
-/- if can? :create, Strain
-= link_to text_with_icon('New Strain', 'plus'), new_strain_path, class: 'btn btn-primary'
+- if policy(@strains).create?
+  = link_to text_with_icon('New Strain', 'plus'), new_strain_path, class: 'btn btn-primary'

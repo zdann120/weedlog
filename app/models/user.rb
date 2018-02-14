@@ -13,6 +13,7 @@
 #  remember_created_at    :datetime
 #  reset_password_sent_at :datetime
 #  reset_password_token   :string
+#  role                   :integer          default(0)
 #  sign_in_count          :integer          default(0), not null
 #  updated_at             :datetime         not null
 #
@@ -28,4 +29,5 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
   has_many :reviews
+  enum role: [:user, :admin, :editor]
 end

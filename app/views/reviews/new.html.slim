@@ -5,15 +5,22 @@ h2.text-muted = @strain.name
   = f.error_notification
 
   .form-inputs
-    = f.input :rating, as: :select, collection: 1..10, autofocus: true
+    .row
+      .col-md-4
+        = f.input :rating, as: :select, collection: 1..10, autofocus: true
+      .col-md-4
+        = f.association :retailer
+      .col-md-4
+        = f.input :product_type, as: :select, 
+          collection: %w(Flower Cartridge Concentrate)
+
     = f.input :comment
-    = f.association :retailer
-    = f.input :product_type
-    /= f.association :effects
 
   = f.submit 'Post Review', class: 'btn btn-primary'
   '
   = link_to text_with_icon('Back', 'chevron-left'), :back, class: 'btn btn-default'
 
-/javascript:
-  $('#review_effect_ids').select2();
+javascript:
+  $('#review_retailer_id').select2();
+  $('#review_rating').select2();
+  $('#review_product_type').select2();
