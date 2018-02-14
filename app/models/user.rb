@@ -47,6 +47,8 @@ class User < ApplicationRecord
   has_many :reviews
   enum role: [:user, :admin, :editor]
   after_validation :set_username, if: :name_updated?
+
+  validates :first_name, :last_name, :email, presence: true
   def set_username
     self.username = generate_username
   end
