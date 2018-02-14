@@ -113,8 +113,6 @@ GEM
     factory_bot_rails (4.8.2)
       factory_bot (~> 4.8.2)
       railties (>= 3.0.0)
-    faraday (0.14.0)
-      multipart-post (>= 1.2, < 3)
     ffi (1.9.21)
     globalid (0.4.1)
       activesupport (>= 4.2.0)
@@ -146,7 +144,7 @@ GEM
     mini_portile2 (2.3.0)
     minitest (5.11.3)
     msgpack (1.2.2)
-    multipart-post (2.0.0)
+    multi_json (1.13.1)
     nio4r (2.2.0)
     nokogiri (1.8.2)
       mini_portile2 (~> 2.3.0)
@@ -199,6 +197,8 @@ GEM
     responders (2.4.0)
       actionpack (>= 4.2.0, < 5.3)
       railties (>= 4.2.0, < 5.3)
+    rollbar (2.15.5)
+      multi_json
     rspec-core (3.7.1)
       rspec-support (~> 3.7.0)
     rspec-expectations (3.7.0)
@@ -253,8 +253,6 @@ GEM
     selenium-webdriver (3.9.0)
       childprocess (~> 0.5)
       rubyzip (~> 1.2)
-    sentry-raven (2.7.2)
-      faraday (>= 0.7.6, < 1.0)
     simple_form (3.5.0)
       actionpack (> 4, < 5.2)
       activemodel (> 4, < 5.2)
@@ -330,12 +328,12 @@ DEPENDENCIES
   rack-canonical-host
   rack-timeout
   rails (~> 5.2.0.rc1)
+  rollbar
   rspec-rails
   rspec_junit_formatter
   rubocop
   sass-rails
   sassc-rails
-  sentry-raven
   simple_form
   simplecov
   slim-rails

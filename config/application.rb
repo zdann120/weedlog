@@ -52,6 +52,4 @@ module WeedLog
   end
 end
 
-Raven.configure do |config|
-  config.dsn = 'https://34630c360d9a4a20b3f6a7c8e244df68:95392b28fe7e426c9d5a04aaec59e2be@sentry.io/287904'
-end
+
