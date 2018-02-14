@@ -1,8 +1,13 @@
 # WeedLog
 
-...
+This is an application for a group of friends to keep track of which strains
+they like.
 
-Generated with [Raygun](https://github.com/carbonfive/raygun).
+# Roadmap
+
+[  ] Sort the list of strains by different attributes
+[  ] Add the ability to upload photos with reviews.
+[  ] Add ability to track if you have tried a strain.
 
 # Development
 
