@@ -9,3 +9,29 @@ javascript:
   br
   p This is an for Zach and friends to rate and categorize different strains they have tried.
   p Hopefully this will be a useful tool for remembering which strains are worth trying again.
+
+.row
+  .col-md-4
+    .panel.panel-default
+      .panel-heading
+        h3.panel-title Recently added strains
+      ul.list-group
+        - Strain.all.limit(5).each do |strain|
+          li.list-group-item = link_to strain.name, strain
+
+  .col-md-4
+    .panel.panel-default
+      .panel-heading
+        h3.panel-title Recent Reviews
+      ul.list-group
+        - Review.all.limit(5).each do |review|
+          li.list-group-item
+            = link_to review.strain.name
+            | &mdash;
+            | #{review.rating} out of 10
+
+  .col-md-4
+    .panel.panel-default
+      .panel-heading
+        h3.panel-title Recent Reviews
+      ul.list-group

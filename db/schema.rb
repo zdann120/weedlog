@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_02_14_005911) do
+ActiveRecord::Schema.define(version: 2018_02_14_043852) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -65,6 +65,7 @@ ActiveRecord::Schema.define(version: 2018_02_14_005911) do
     t.string "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.decimal "average_rating", default: "0.0"
     t.index ["name"], name: "index_strains_on_name", unique: true
     t.index ["token"], name: "index_strains_on_token", unique: true
   end

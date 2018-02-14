@@ -2,13 +2,14 @@
 #
 # Table name: strains
 #
-#  created_at  :datetime         not null
-#  description :string
-#  id          :integer          not null, primary key
-#  lineage     :string
-#  name        :string
-#  token       :string
-#  updated_at  :datetime         not null
+#  average_rating :decimal(, )      default(0.0)
+#  created_at     :datetime         not null
+#  description    :string
+#  id             :integer          not null, primary key
+#  lineage        :string
+#  name           :string
+#  token          :string
+#  updated_at     :datetime         not null
 #
 # Indexes
 #

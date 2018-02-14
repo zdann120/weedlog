@@ -23,8 +23,10 @@ gem "pundit"
 gem "devise"
 gem "devise_invitable"
 gem 'rollbar'
-
+gem "sidekiq"
+gem "sidekiq-scheduler"
 gem "awesome_print"
+gem "redis"
 
 group :production, :acceptance do
   gem "rack-timeout"

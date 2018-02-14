@@ -1,0 +1,15 @@
+---
+:concurrency: 5
+staging:
+  :concurrency: 10
+production:
+  :concurrency: 20
+:queues:
+  - critical
+  - default
+  - low
+  - mailers
+:schedule:
+  calculate_strain_rating:
+    cron: '0 * * * * *'
+    class: CalculateAveragesJob
