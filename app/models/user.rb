@@ -34,10 +34,13 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
   has_many :reviews
   enum role: [:user, :admin, :editor]
-
+  after_validation :set_username, if: :name_updated?
   def set_username
     self.username = generate_username
-    save
+  end
+
+  def name_updated?
+    first_name_changed? || last_name_changed?
   end
 
   private
