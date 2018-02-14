@@ -29,6 +29,8 @@ html
                     = current_user.email+ " (#{current_user.role})"
                     b.caret
                   ul.dropdown-menu
+                    - if current_user.admin?
+                      li= link_to 'Manage Users', admin_users_path
                     li= link_to text_with_icon('Sign Out', 'log-out'), destroy_user_session_path, method: :delete
               - else
                 li= link_to text_with_icon('Sign In', 'log-in'), new_user_session_path
