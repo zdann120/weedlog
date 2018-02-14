@@ -12,7 +12,7 @@ class StrainPolicy < ApplicationPolicy
   end
 
   def update?
-    user.admin?
+    user.admin? || user.editor?
   end
 
   def destroy?
