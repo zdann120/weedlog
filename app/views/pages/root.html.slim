@@ -33,7 +33,7 @@ javascript:
   .col-md-4
     .panel.panel-default
       .panel-heading
-        h3.panel-title Recent Reviews
+        h3.panel-title Leaderboard
       ul.list-group
         - Strain.all.order(average_rating: :desc).limit(5).each do |s|
           li.list-group-item
